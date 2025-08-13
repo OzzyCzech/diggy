@@ -1,0 +1,8 @@
+{
+  "name": "diggy",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "git@github.com:OzzyCzech/diggy.git",
+  "author": "Roman Ožana <roman@ozana.cz>",
+  "license": "MIT"
+}
