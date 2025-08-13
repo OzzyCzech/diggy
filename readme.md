@@ -74,7 +74,7 @@ function getDnsRecords(
 
 **Returns:** Promise resolving to an array of DNS records
 
-## 🌐 Available
+## 🌐 Available Resolvers
 
 ### Built-in Resolvers
 
