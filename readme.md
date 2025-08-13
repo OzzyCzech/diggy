@@ -108,12 +108,12 @@ const records = await getDnsRecords('example.com', 'A', "nodejs");
 const records = await getDnsRecords('example.com', 'A', "dig");
 ```
 
-| Resolver     | Description                 | Environment                       | 
-|--------------|-----------------------------|-----------------------------------|
-| `google`     | Google DNS over HTTPS       | Browsers, Node.js                 | 
-| `cloudflare` | Cloudflare DNS over HTTPS   | Browsers, Node.js                 | 
-| `nodejs`     | Node.js built-in DNS module | Node.js only                      | 
-| `dig`        | Native dig command          | Node.js, requires `dig` installed | 
+| Resolver     | Description                 | Environment                            | 
+|--------------|-----------------------------|----------------------------------------|
+| `google`     | Google DNS over HTTPS       | Browsers, Node.js                      | 
+| `cloudflare` | Cloudflare DNS over HTTPS   | Browsers, Node.js                      | 
+| `nodejs`     | Node.js built-in DNS module | Node.js only                           | 
+| `dig`        | Native dig command          | Node.js only, requires `dig` installed | 
 
 ### Configure built-in resolvers
 
