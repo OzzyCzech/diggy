@@ -60,12 +60,26 @@ const allRecords = await getDnsRecords('example.com', undefined, "dig");
 
 ## 📜 Response Format
 
-| Property | Type   | Description                                                      |
-|----------|--------|------------------------------------------------------------------|
-| `type`   | string | The DNS record type (e.g., A, AAAA, SOA, CNAME, TXT, MX, etc.)   |
-| `name`   | string | The domain name associated with the record                       |
-| `data`   | string | The record value (string or array of strings, depending on type) |
-| `ttl`    | number | Time-to-live in seconds                                          |
+```typescript
+import { CaaRecordData, MxRecordData, SoaRecordData, SrvRecordData } from "./types";
+import { NaptrRecord } from "node:dns";
+
+interface DnsRecord {
+	name: string;    // Domain name
+	type: string;    // Record type (A, AAAA, MX, etc.)
+	ttl: number;     // Time-to-live in seconds
+
+	// Record data (format varies by type)
+	data:
+		| string
+		| string[]
+		| MxRecordData
+		| SoaRecordData
+		| CaaRecordData
+		| NaptrRecord
+		| SrvRecordData;
+}
+```
 
 Responses are returned as an array of objects, each representing a DNS record.
 
