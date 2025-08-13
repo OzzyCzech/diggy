@@ -110,9 +110,9 @@ const records = await getDnsRecords('example.com', 'A', "dig");
 
 | Resolver     | Description                 | Environment                                   |
 |--------------|-----------------------------|-----------------------------------------------|
-| `google`     | Google DNS over HTTPS       | Works in Browser and Node.js runtime          |
-| `cloudflare` | Cloudflare DNS over HTTPS   | Works in Browser and Node.js runtime          |
-| `nodejs`     | Node.js built-in DNS module | Node.js runtime                               |
+| `google`     | Google DNS over HTTPS       | Browsers and Node.js runtime                  |
+| `cloudflare` | Cloudflare DNS over HTTPS   | Browsers and Node.js runtime                  |
+| `nodejs`     | Node.js built-in DNS module | Node.js runtime (only)                        |
 | `dig`        | Native dig command          | Node.js runtime and `dig` installed on system |
 
 ### Configure built-in resolvers
