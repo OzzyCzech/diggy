@@ -54,7 +54,6 @@ const mxRecords = await getDnsRecords('example.com', 'MX');
 
 ```typescript
 import { type AnyDNSRecord, getDnsRecords } from 'diggy';
-
 const records: AnyDNSRecord[] = await getDnsRecords('example.com', 'A');
 ```
 
