@@ -1,5 +1,11 @@
 # 👾 Diggy
 
+[![NPM Downloads](https://img.shields.io/npm/dm/diggy?style=for-the-badge)](https://www.npmjs.com/package/diggy)
+[![NPM Version](https://img.shields.io/npm/v/diggy?style=for-the-badge)](https://www.npmjs.com/package/diggy)
+[![NPM License](https://img.shields.io/npm/l/diggy?style=for-the-badge)](https://github.com/OzzyCzech/diggy/blob/main/LICENSE)
+[![Last Commit](https://img.shields.io/github/last-commit/OzzyCzech/diggy?style=for-the-badge)](https://github.com/OzzyCzech/diggy/commits/main)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/OzzyCzech/diggy/main.yml?style=for-the-badge)](https://github.com/OzzyCzech/diggy/actions)
+
 👾 **Diggy** is a flexible, multi-backend JavaScript **DNS resolver** for fetching **DNS records**
 with support for various resolution methods including DNS over HTTPS, native `dig` commands, and Node.js built-in DNS
 functionality.
