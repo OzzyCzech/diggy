@@ -12,7 +12,7 @@ functionality.
 - **⚡ Native dig Support** - Leverage system [DNS tools](https://linux.die.net/man/1/dig) directly from Node.js
 - **🛠️ Node.js Integration** - Use built-in Node.js [DNS functionality](https://nodejs.org/api/dns.html)
 - **📋 Complete Record Support** - Fetch A, AAAA, SOA, CNAME, TXT, MX, SRV, CAA, NAPTR, and more
-- **🚀 Zero Dependencies** - Lightweight with literally **no external dependencies**
+- **🚀 Zero Dependencies** - Lightweight with literally no external dependencies
 - **🎯 TypeScript ready** - Full type definitions included
 
 ## 📦 Installation
