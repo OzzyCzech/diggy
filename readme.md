@@ -83,7 +83,7 @@ JavaScript. There are built-in resolvers for Google and Cloudflare DNS over HTTP
 
 <script type="module">
 	import { getDnsRecords } from 'https://esm.sh/diggy';
-
+	
 	const records = await getDnsRecords('ozana.cz');
 </script>
 ```
@@ -108,12 +108,12 @@ const records = await getDnsRecords('example.com', 'A', "nodejs");
 const records = await getDnsRecords('example.com', 'A', "dig");
 ```
 
-| Resolver     | Description                 | Environment                                   |
-|--------------|-----------------------------|-----------------------------------------------|
-| `google`     | Google DNS over HTTPS       | Browsers and Node.js runtime                  |
-| `cloudflare` | Cloudflare DNS over HTTPS   | Browsers and Node.js runtime                  |
-| `nodejs`     | Node.js built-in DNS module | Node.js runtime (only)                        |
-| `dig`        | Native dig command          | Node.js runtime and `dig` installed on system |
+| Resolver     | Description                 | Environment                       | 
+|--------------|-----------------------------|-----------------------------------|
+| `google`     | Google DNS over HTTPS       | Browsers, Node.js                 | 
+| `cloudflare` | Cloudflare DNS over HTTPS   | Browsers, Node.js                 | 
+| `nodejs`     | Node.js built-in DNS module | Node.js only                      | 
+| `dig`        | Native dig command          | Node.js, requires `dig` installed | 
 
 ### Configure built-in resolvers
 
