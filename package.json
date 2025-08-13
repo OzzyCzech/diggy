@@ -19,7 +19,7 @@
 	],
 	"scripts": {
 		"build": "rm -rf dist && tsc",
-		"release": "npx np",
+		"release": "np",
 		"prepare": "npm run build",
 		"test": "tsc --noEmit && vitest",
 		"format": "biome check --write .",
