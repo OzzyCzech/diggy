@@ -86,23 +86,22 @@ export type DNSResolver = (
 ## 📜 Response Format
 
 ```typescript
-import { CaaRecordData, MxRecordData, SoaRecordData, SrvRecordData } from "./types";
-import { NaptrRecord } from "node:dns";
+import { CaaRecordData, MxRecordData, SoaRecordData, SrvRecordData, NaptrRecordData } from "./types";
 
-interface DnsRecord {
-  name: string;    // Domain name
-  type: string;    // Record type (A, AAAA, MX, etc.)
-  ttl: number;     // Time-to-live in seconds
+interface AnyDNSRecord {
+	name: string;    // Domain name
+	type: string;    // Record type (A, AAAA, MX, etc.)
+	ttl: number;     // Time-to-live in seconds
 
-  // Record data (format varies by type)
-  data:
-    | string
-    | string[]
-    | MxRecordData
-    | SoaRecordData
-    | CaaRecordData
-    | NaptrRecord
-    | SrvRecordData;
+	// Record data (format varies by type)
+	data:
+		| string
+		| string[]
+		| MxRecordData
+		| SoaRecordData
+		| CaaRecordData
+		| NaptrRecordData
+		| SrvRecordData;
 }
 ```
 
