@@ -21,34 +21,38 @@ npm install diggy
 ```javascript
 import { getDnsRecords } from 'diggy';
 
+// Fetch all DNS records for a domain
 const allRecords = await getDnsRecords('example.com');
 console.log(allRecords);
 
+// Fetch only A records
 const aRecords = await getDnsRecords('example.com', 'A');
 console.log(aRecords);
 
+// Fetch only TXT records
 const aRecords = await getDnsRecords('example.com', 'TXT');
 console.log(aRecords);
 ```
 
-The response will be an `array` of DNS records, each containing the following properties:
+## 📜 Response Format
 
-- `type`: The type of DNS record (e.g., A, AAAA, SOA, CA, TXT, MX, etc.)
-- `name`: The name of the DNS record (e.g., the domain name)
-- `data`: The value of the DNS record mostly is a string, can be an array of strings for some specific type
-- `ttl`: The time-to-live of the DNS record in seconds
+| Property | Type   | Description                                                      |
+|----------|--------|------------------------------------------------------------------|
+| `type`   | string | The DNS record type (e.g., A, AAAA, SOA, CNAME, TXT, MX, etc.)   |
+| `name`   | string | The domain name associated with the record                       |
+| `data`   | string | The record value (string or array of strings, depending on type) |
+| `ttl`    | number | Time-to-live in seconds                                          |
 
-## Change resolver
+## 🔧 Changing the Resolver
 
-The default DNS resolver is [Google DNS JSON Over HTTPS](https://dns.google/resolve?name=ozana.cz&type=A). You can
-specify a custom resolver URL by passing it as the third argument to the `getDnsRecords` function.
+By default, Diggy uses [Google DNS JSON Over HTTPS](https://dns.google/resolve?name=ozana.cz&type=A). You can use a
+custom resolver by passing it as the third argument to `getDnsRecords`.
 
 ```javascript
-import { getDnsRecords } from 'diggy';
+import { getDnsRecords, dnsJsonOverHttps } from 'diggy';
 
 const myResolver = dnsJsonOverHttps("https://custom.json.dns/resolve");
-
 const txtRecords = await getDnsRecords('example.com', "TXT", myResolver);
 ```
 
-A list of publicly available DNS resolvers can be found at https://public-dns.info/.
+💡 A list of publicly available DNS resolvers is available at: https://public-dns.info/.
