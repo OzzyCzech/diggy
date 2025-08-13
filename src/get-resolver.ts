@@ -1,13 +1,13 @@
 import { digResolver } from "./resolvers/dig-resolver";
-import { dnsJsonOverHttps } from "./resolvers/dns-json-over-https";
+import { dohResolver } from "./resolvers/doh-resolver";
 import { nodeResolver } from "./resolvers/node-resolver";
 import type { BuildInDNSResolver, DNSResolver } from "./types";
 
 const resolvers: Record<BuildInDNSResolver, DNSResolver> = {
 	nodejs: nodeResolver(),
 	dig: digResolver(),
-	google: dnsJsonOverHttps("https://dns.google/resolve"),
-	cloudflare: dnsJsonOverHttps("https://cloudflare-dns.com/dns-query"),
+	google: dohResolver("https://dns.google/resolve"),
+	cloudflare: dohResolver("https://cloudflare-dns.com/dns-query"),
 };
 
 export function getResolver(

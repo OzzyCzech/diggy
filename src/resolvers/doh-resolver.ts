@@ -19,7 +19,7 @@ const DNSTypeNumbers = new Map<number, string>([
 	[257, "CAA"],
 ]);
 
-export function dnsJsonOverHttps(url: string): DNSResolver {
+export function dohResolver(url: string): DNSResolver {
 	const dnsUrl = new URL(url);
 
 	return async (host: string, type: DNSRecordType): Promise<AnyDNSRecord[]> => {

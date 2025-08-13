@@ -106,15 +106,15 @@ const records = await getDnsRecords('example.com', 'A', "dig");
 Create your own DNS resolver for custom endpoints:
 
 ```javascript
-import { getDnsRecords, dnsJsonOverHttps } from 'diggy';
+import { getDnsRecords, dohResolver } from 'diggy';
 
-const customResolver = dnsJsonOverHttps("https://custom.dns.provider/resolve");
-const records = await getDnsRecords('example.com', 'TXT', customResolver);
+const customDohResolver = dohResolver("https://custom.dns.provider/resolve");
+const records = await getDnsRecords('example.com', 'TXT', customDohResolver);
 ```
 
 > 💡 **Tip:** Find more public [DoH endpoints here](https://github.com/curl/curl/wiki/DNS-over-HTTPS)
 
-Just like with `dnsJsonOverHttps`, you can also use `digResolver` or `nodeResolver` and specify a custom DNS server:
+Just like with `dohResolver`, you can also use `digResolver` or `nodeResolver` and specify a custom DNS server:
 
 ```javascript
 import { getDnsRecords, digResolver, nodeResolver } from 'diggy';

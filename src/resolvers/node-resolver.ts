@@ -10,11 +10,12 @@ import type {
 import * as _dns from "node:dns/promises";
 import { type AnyDNSRecord, DNSRecordType, type DNSResolver } from "../types";
 
-export function nodeResolver(
-	servers: string[] = ["1.1.1.1", "8.8.8.8"],
-): DNSResolver {
+export function nodeResolver(servers: string[] = []): DNSResolver {
 	const dns = new _dns.Resolver();
-	dns.setServers(servers);
+
+	if (servers) {
+		dns.setServers(servers);
+	}
 
 	return async (host: string, type: DNSRecordType): Promise<AnyDNSRecord[]> => {
 		try {
