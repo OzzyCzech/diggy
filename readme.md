@@ -101,7 +101,7 @@ const records = await getDnsRecords('example.com', 'A', "dig");
 | `nodejs`     | Node.js built-in DNS module | Node.js runtime           |
 | `dig`        | Native dig command          | `dig` installed on system |
 
-### Customize Resolvers
+### Configure built-in resolvers
 
 Create your own DNS resolver for custom endpoints:
 
@@ -112,24 +112,32 @@ const customResolver = dnsJsonOverHttps("https://custom.dns.provider/resolve");
 const records = await getDnsRecords('example.com', 'TXT', customResolver);
 ```
 
-**Custom Resolver Interface:**
+> 💡 **Tip:** Find more public [DoH endpoints here](https://github.com/curl/curl/wiki/DNS-over-HTTPS)
+
+Just like with `dnsJsonOverHttps`, you can also use `digResolver` or `nodeResolver` and specify a custom DNS server:
+
+```javascript
+import { getDnsRecords, digResolver, nodeResolver } from 'diggy';
+
+// Native nodejs dns resolver witg specific DNS server
+const customNodejsResolver = nodeResolver(['8.8.8.8']);
+const records = await getDnsRecords('example.com', 'A', customNodejsResolver);
+
+// Native dig command with specific DNS server
+const customDigResolver = digResolver('1.1.1.1');
+const records = await getDnsRecords('example.com', 'A', customDigResolver);
+```
+
+> 💡 **Tip:** Find more public [DNS servers here](https://public-dns.info/)
+
+You can also **create your own custom resolver** by implementing the `DNSResolver` interface:
+
 ```typescript
 export type DNSResolver = (
 	host: string,
 	type: DNSRecordType,
 ) => Promise<AnyDNSRecord[]>;
 ```
-
-> 💡 **Tip:** Find more public [DoH endpoints here](https://github.com/curl/curl/wiki/DNS-over-HTTPS)
-
-Same as `dnsJsonOverHttps`, you can also use `digResolver` with a custom server:
-
-```javascript
-import { getDnsRecords, digResolver } from 'diggy';
-const customDigResolver = digResolver('1.1.1.1');
-const records = await getDnsRecords('example.com', 'A', customDigResolver);
-```
-> 💡 **Tip:** Find more public [DNS servers here](https://public-dns.info/)
 
 ## 📝 Supported Record Types
 
@@ -224,7 +232,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
-
 
 --- 
 
