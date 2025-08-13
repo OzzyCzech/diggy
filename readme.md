@@ -1,9 +1,15 @@
 # Diggy
 
-Diggy is a multi-backend JavaScript DNS resolver library for fetching DNS records using DNS over HTTPS (DoH), the `dig`
-command, or native [Node.js DNS](https://nodejs.org/api/dns.html) module.
+**Diggy** is a multi-backend JavaScript **DNS resolver** library for fetching DNS records using DNS over HTTPS (DoH),
+the `dig` command, or native [Node.js DNS](https://nodejs.org/api/dns.html) module.
 
 You can retrieve various types of DNS records for a given domain, such as A, AAAA, SOA, CNAME, TXT, MX, and more.
+
+## Installation
+
+```bash
+npm install diggy
+```
 
 ## Usage
 
