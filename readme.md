@@ -74,6 +74,18 @@ function getDnsRecords(
 
 **Returns:** Promise resolving to an array of DNS records
 
+## 🌍 Browser Usage
+
+You can also use Diggy in the browser via ESM imports. This allows you to fetch DNS records directly from client-side
+JavaScript. There are built-in resolvers for Google and Cloudflare DNS over HTTPS, which work seamlessly in the browser.
+
+```html
+<script type="module">
+  import { getDnsRecords } from 'https://esm.sh/diggy';
+  const records = await getDnsRecords('ozana.cz');
+</script>
+```
+
 ## 🌐 Available Resolvers
 
 ### Built-in Resolvers
