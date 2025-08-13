@@ -1,6 +1,6 @@
-# Diggy
+# 👾 Diggy
 
-**Diggy** is multi-backend JavaScript **DNS resolver** for fetching **DNS records** with flexible backend support.
+👾 **Diggy** is multi-backend JavaScript **DNS resolver** for fetching **DNS records** with flexible backend support.
 
 ## Features
 
