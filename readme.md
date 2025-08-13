@@ -65,11 +65,11 @@ Responses are returned as an array of objects, each representing a DNS record.
 ```json
 [
 	{
-		"name": "testomato.com",
+		"name": "example.com",
 		"type": "SOA",
 		"ttl": 3600,
 		"data": {
-			"nsname": "ns1.testomato.com.",
+			"nsname": "ns1.example.com.",
 			"hostmaster": "hostmaster.example.com.",
 			"serial": 2025051204,
 			"refresh": 10800,
