@@ -1,9 +1,9 @@
 import { digResolver } from "./resolvers/dig-resolver";
 import { dnsJsonOverHttps } from "./resolvers/dns-json-over-https";
 import { nodeResolver } from "./resolvers/node-resolver";
-import type { BuildInResolvers, DNSResolver } from "./types";
+import type { BuildInDNSResolver, DNSResolver } from "./types";
 
-const resolvers: Record<BuildInResolvers, DNSResolver> = {
+const resolvers: Record<BuildInDNSResolver, DNSResolver> = {
 	nodejs: nodeResolver(),
 	dig: digResolver(),
 	google: dnsJsonOverHttps("https://dns.google/resolve"),
@@ -11,14 +11,14 @@ const resolvers: Record<BuildInResolvers, DNSResolver> = {
 };
 
 export function getResolver(
-	resolver?: string | BuildInResolvers | DNSResolver,
+	resolver?: string | BuildInDNSResolver | DNSResolver,
 ): DNSResolver {
 	if (typeof resolver === "function") {
 		return resolver;
 	}
 
 	if (typeof resolver === "string" && resolver in resolvers) {
-		return resolvers[resolver as BuildInResolvers];
+		return resolvers[resolver as BuildInDNSResolver];
 	}
 
 	return resolvers.google;

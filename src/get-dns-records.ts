@@ -1,7 +1,7 @@
 import { getResolver } from "./get-resolver";
 import type {
 	AnyDNSRecord,
-	BuildInResolvers,
+	BuildInDNSResolver,
 	DNSRecordType,
 	DNSResolver,
 } from "./types";
@@ -11,7 +11,7 @@ import { toDnsType } from "./utils/to-dns-type";
 export function getDnsRecords(
 	host: string,
 	type?: string,
-	resolver?: string | BuildInResolvers | DNSResolver,
+	resolver?: string | BuildInDNSResolver | DNSResolver,
 ): Promise<AnyDNSRecord[]> {
 	const dnsResolver = getResolver(resolver);
 	const dnsType: DNSRecordType | undefined = toDnsType(type);

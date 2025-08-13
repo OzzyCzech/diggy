@@ -3,7 +3,7 @@ export type DNSResolver = (
 	type: DNSRecordType,
 ) => Promise<AnyDNSRecord[]>;
 
-export type BuildInResolvers = "nodejs" | "dig" | "google" | "cloudflare";
+export type BuildInDNSResolver = "nodejs" | "dig" | "google" | "cloudflare";
 
 export enum DNSRecordType {
 	A = "A",
