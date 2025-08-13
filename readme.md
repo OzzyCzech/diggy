@@ -1,5 +1,10 @@
 # Diggy
 
+Diggy is a multi-backend JavaScript DNS resolver library for fetching DNS records using DNS over HTTPS (DoH), the `dig`
+command, or native [Node.js DNS](https://nodejs.org/api/dns.html) module.
+
+You can retrieve various types of DNS records for a given domain, such as A, AAAA, SOA, CNAME, TXT, MX, and more.
+
 ## Usage
 
 ```javascript
@@ -19,7 +24,7 @@ The response will be an `array` of DNS records, each containing the following pr
 
 - `type`: The type of DNS record (e.g., A, AAAA, SOA, CA, TXT, MX, etc.)
 - `name`: The name of the DNS record (e.g., the domain name)
-- `data`: The value of the DNS record mostly is a string, can be an array of strings for some types
+- `data`: The value of the DNS record mostly is a string, can be an array of strings for some specific type
 - `ttl`: The time-to-live of the DNS record in seconds
 
 ## Change resolver
