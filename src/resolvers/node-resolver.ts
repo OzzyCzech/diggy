@@ -13,7 +13,7 @@ import { type AnyDNSRecord, DNSRecordType, type DNSResolver } from "../types";
 export function nodeResolver(servers: string[] = []): DNSResolver {
 	const dns = new _dns.Resolver();
 
-	if (servers) {
+	if (servers.length > 0) {
 		dns.setServers(servers);
 	}
 
