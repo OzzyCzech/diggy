@@ -1,10 +1,6 @@
 # Diggy
 
-**Diggy** is a multi-backend JavaScript **DNS resolver** for fetching DNS records in multiple ways.  
-It supports:
-
-With **Diggy**, you can easily retrieve a variety of DNS record types for any domain — including **A**, **AAAA**,
-**SOA**, **CNAME**, **TXT**, **MX**, and more.
+**Diggy** is multi-backend JavaScript DNS resolver for fetching **DNS records** with flexible backend support.
 
 ## Features
 
@@ -12,7 +8,7 @@ With **Diggy**, you can easily retrieve a variety of DNS record types for any do
 - 🌐 DNS over HTTPS (DoH) - Secure DNS queries over encrypted connections
 - ⚡ Native [dig command](https://linux.die.net/man/1/dig) - Leverage system DNS tools called from Node.js
 - 🔧 Node.js [DNS module](https://nodejs.org/api/dns.html) - Use built-in Node.js DNS functionality
-- 📋 Complete record support - Fetch A, AAAA, SOA, CNAME, TXT, MX, and more
+- 📋 Complete record support - Fetch **A**, **AAAA**, **SOA**, **CNAME**, **TXT**, **MX**, and [more](./src/types.ts)
 - 🎯 TypeScript ready - Full type definitions included
 
 ## Installation
@@ -36,7 +32,7 @@ const txtRecords = await getDnsRecords('example.com', 'TXT');
 const mxRecords = await getDnsRecords('example.com', 'MX');
 ```
 
-### Supported Resolvers
+### Available Build-in Resolvers
 
 Diggy supports multiple DNS resolution backends. You can specify the resolver as the third argument:
 
@@ -54,9 +50,28 @@ const allRecords = await getDnsRecords('example.com', undefined, "nodejs");
 const allRecords = await getDnsRecords('example.com', undefined, "dig");
 ```
 
-### Available Build-in Resolvers
+#### 🔧 Create Custom Resolver
 
+By default, Diggy uses [Google DNS JSON Over HTTPS](https://dns.google/resolve?name=ozana.cz&type=A). You can use a
+custom resolver by passing it as the third argument to `getDnsRecords`.
 
+```javascript
+import { getDnsRecords, dnsJsonOverHttps } from 'diggy';
+
+const myResolver = dnsJsonOverHttps("https://custom.json.dns/resolve");
+const txtRecords = await getDnsRecords('example.com', "TXT", myResolver);
+```
+
+Your resolver must implement the same interface as the built-in resolvers.
+
+```typescript
+export type DNSResolver = (
+	host: string,
+	type: DNSRecordType,
+) => Promise<AnyDNSRecord[]>;
+```
+
+💡 A list of publicly available DNS resolvers is available at: https://public-dns.info/.
 
 ## 📜 Response Format
 
@@ -117,16 +132,16 @@ Responses are returned as an array of objects, each representing a DNS record.
 ]
 ```
 
-## 🔧 Changing the Resolver
+## License
 
-By default, Diggy uses [Google DNS JSON Over HTTPS](https://dns.google/resolve?name=ozana.cz&type=A). You can use a
-custom resolver by passing it as the third argument to `getDnsRecords`.
+[MIT](/LICENSE)
 
-```javascript
-import { getDnsRecords, dnsJsonOverHttps } from 'diggy';
+## Contributing
 
-const myResolver = dnsJsonOverHttps("https://custom.json.dns/resolve");
-const txtRecords = await getDnsRecords('example.com', "TXT", myResolver);
-```
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-💡 A list of publicly available DNS resolvers is available at: https://public-dns.info/.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
