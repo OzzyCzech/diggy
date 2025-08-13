@@ -16,6 +16,7 @@ export function digResolver(server?: string): DNSResolver {
 
 		const { spawnSync } = await import("node:child_process");
 
+		// Use spawnSync to run the dig command synchronously and capture the output
 		const dig = spawnSync("dig", [...args, "+noall", "+answer", "+cdflag"]);
 		const results = dig.stdout.toString();
 

@@ -3,12 +3,17 @@
 **Diggy** is a multi-backend JavaScript **DNS resolver** for fetching DNS records in multiple ways.  
 It supports:
 
-- DNS over HTTPS (DoH)
-- The native [`dig`](https://linux.die.net/man/1/dig) command
-- The built-in Node.js [dns module](https://nodejs.org/api/dns.html)
-
 With **Diggy**, you can easily retrieve a variety of DNS record types for any domain — including **A**, **AAAA**,
 **SOA**, **CNAME**, **TXT**, **MX**, and more.
+
+## Features
+
+- ✨ Multiple DNS backends - Choose the resolver that works best for your environment
+- 🌐 DNS over HTTPS (DoH) - Secure DNS queries over encrypted connections
+- ⚡ Native [dig command](https://linux.die.net/man/1/dig) - Leverage system DNS tools called from Node.js
+- 🔧 Node.js [DNS module](https://nodejs.org/api/dns.html) - Use built-in Node.js DNS functionality
+- 📋 Complete record support - Fetch A, AAAA, SOA, CNAME, TXT, MX, and more
+- 🎯 TypeScript ready - Full type definitions included
 
 ## Installation
 
@@ -16,7 +21,7 @@ With **Diggy**, you can easily retrieve a variety of DNS record types for any do
 npm install diggy
 ```
 
-## Usage
+## Quick Start
 
 ```javascript
 import { getDnsRecords } from 'diggy';
@@ -25,17 +30,15 @@ import { getDnsRecords } from 'diggy';
 const allRecords = await getDnsRecords('example.com');
 console.log(allRecords);
 
-// Fetch only A records
+// Fetch specific record types
 const aRecords = await getDnsRecords('example.com', 'A');
-console.log(aRecords);
-
-// Fetch only TXT records
-const aRecords = await getDnsRecords('example.com', 'TXT');
-console.log(aRecords);
+const txtRecords = await getDnsRecords('example.com', 'TXT');
+const mxRecords = await getDnsRecords('example.com', 'MX');
 ```
 
-Resolver can be specified as the third argument, allowing you to use custom DNS resolvers.
-There is few built-in resolvers available, such as `dnsJsonOverHttps` for Google DNS JSON Over HTTPS.
+### Supported Resolvers
+
+Diggy supports multiple DNS resolution backends. You can specify the resolver as the third argument:
 
 ```javascript
 // Use Google DNS JSON Over HTTPS
@@ -50,6 +53,10 @@ const allRecords = await getDnsRecords('example.com', undefined, "nodejs");
 // Use dig command
 const allRecords = await getDnsRecords('example.com', undefined, "dig");
 ```
+
+### Available Build-in Resolvers
+
+
 
 ## 📜 Response Format
 
