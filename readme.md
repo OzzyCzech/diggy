@@ -18,8 +18,8 @@ console.log(aRecords);
 The response will be an `array` of DNS records, each containing the following properties:
 
 - `type`: The type of DNS record (e.g., A, AAAA, SOA, CA, TXT, MX, etc.)
-- `name`: The name of the DNS record
-- `data`: The value of the DNS record
+- `name`: The name of the DNS record (e.g., the domain name)
+- `data`: The value of the DNS record mostly is a string, can be an array of strings for some types
 - `ttl`: The time-to-live of the DNS record in seconds
 
 ## Change resolver
