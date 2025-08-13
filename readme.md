@@ -1,23 +1,41 @@
 # 👾 Diggy
 
-👾 **Diggy** is multi-backend JavaScript **DNS resolver** for fetching **DNS records** with flexible backend support.
+👾 **Diggy** is a flexible, multi-backend JavaScript **DNS resolver** for fetching **DNS records**
+with support for various resolution methods including DNS over HTTPS, native `dig` commands, and Node.js built-in DNS
+functionality.
 
 ## Features
 
-- ✨ Multiple DNS backends - Choose the resolver that works best for your environment
-- 🌐 DNS over HTTPS (DoH) - Secure DNS queries over encrypted connections
-- ⚡ Native [dig command](https://linux.die.net/man/1/dig) - Leverage system DNS tools called from Node.js
-- 🔧 Node.js [DNS module](https://nodejs.org/api/dns.html) - Use built-in Node.js DNS functionality
-- 📋 Complete record support - Fetch **A**, **AAAA**, **SOA**, **CNAME**, **TXT**, **MX**, and [more](./src/types.ts)
-- 🎯 TypeScript ready - Full type definitions included
+- **✨ Multiple DNS backends** - Choose from Google DoH, Cloudflare DoH, Node.js DNS, or native dig command or even
+  create your own custom resolver!
+- **🔒 DNS over HTTPS (DoH)** - Secure DNS queries over encrypted connections
+- **⚡ Native dig Support** - Leverage system [DNS tools](https://linux.die.net/man/1/dig) directly from Node.js
+- **🛠️ Node.js Integration** - Use built-in Node.js [DNS functionality](https://nodejs.org/api/dns.html)
+- **📋 Complete Record Support** - Fetch A, AAAA, SOA, CNAME, TXT, MX, SRV, CAA, NAPTR, and more
+- **🚀 Zero Dependencies** - Lightweight with literally **no external dependencies**
+- **🎯 TypeScript ready** - Full type definitions included
 
-## Installation
+## 📦 Installation
 
 ```bash
 npm install diggy
 ```
 
-## Quick Start
+```bash
+yarn add diggy
+```
+
+```bash
+pnpm add diggy
+```
+
+```bash
+bun add diggy
+```
+
+## 🚀 Quick Start
+
+### Basic Usage
 
 ```javascript
 import { getDnsRecords } from 'diggy';
@@ -32,58 +50,104 @@ const txtRecords = await getDnsRecords('example.com', 'TXT');
 const mxRecords = await getDnsRecords('example.com', 'MX');
 ```
 
-```typescript
-function getDnsRecords(
-  host: string,
-  type?: string,
-  resolver?: string | BuildInDNSResolver | DNSResolver,
-): Promise<AnyDNSRecord[]> {
+### TypeScript Support
 
-}
+```typescript
+import { type AnyDNSRecord, getDnsRecords } from 'diggy';
+
+const records: AnyDNSRecord[] = await getDnsRecords('example.com', 'A');
 ```
 
-### Available Build-in Resolvers
+```typescript
+function getDnsRecords(
+	host: string,
+	type?: string,
+	resolver?: string | BuildInDNSResolver | DNSResolver,
+): Promise<AnyDNSRecord[]>
+```
 
-Diggy supports multiple DNS resolution backends. You can specify the resolver as the third argument:
+**Parameters:**
+
+- `host` (string): The domain name to query
+- `type` (string, optional): DNS record type (A, AAAA, MX, TXT, etc.). If omitted, returns all available records
+- `resolver` (string | BuildInDNSResolver | DNSResolver, optional): DNS resolver to use
+
+**Returns:** Promise resolving to an array of DNS records
+
+## 🌐 Available
+
+### Built-in Resolvers
+
+Diggy includes several pre-configured resolvers:
 
 ```javascript
 // Use Google DNS JSON Over HTTPS
-const allRecords = await getDnsRecords('example.com', undefined, "google");
+const records = await getDnsRecords('example.com', 'A', "google");
 
 // Use Cloudflare DNS JSON Over HTTPS
-const allRecords = await getDnsRecords('example.com', undefined, "cloudflare");
+const records = await getDnsRecords('example.com', 'A', "cloudflare");
 
 // Use nodejs dns module
-const allRecords = await getDnsRecords('example.com', undefined, "nodejs");
+const records = await getDnsRecords('example.com', 'A', "nodejs");
 
 // Use dig command
-const allRecords = await getDnsRecords('example.com', undefined, "dig");
+const records = await getDnsRecords('example.com', 'A', "dig");
 ```
 
-#### 🔧 Create Custom Resolver
+| Resolver     | Description                 | Environment               |
+|--------------|-----------------------------|---------------------------|
+| `google`     | Google DNS over HTTPS       | Works in Browser          |
+| `cloudflare` | Cloudflare DNS over HTTPS   | Works in Browser          |
+| `nodejs`     | Node.js built-in DNS module | Node.js runtime           |
+| `dig`        | Native dig command          | `dig` installed on system |
 
-By default, Diggy uses [Google DNS JSON Over HTTPS](https://dns.google/resolve?name=ozana.cz&type=A). You can use a
-custom resolver by passing it as the third argument to `getDnsRecords`.
+### Customize Resolvers
+
+Create your own DNS resolver for custom endpoints:
 
 ```javascript
 import { getDnsRecords, dnsJsonOverHttps } from 'diggy';
 
-const myResolver = dnsJsonOverHttps("https://custom.json.dns/resolve");
-const txtRecords = await getDnsRecords('example.com', "TXT", myResolver);
+const customResolver = dnsJsonOverHttps("https://custom.dns.provider/resolve");
+const records = await getDnsRecords('example.com', 'TXT', customResolver);
 ```
 
-Your resolver must implement the same interface as the built-in resolvers.
-
+**Custom Resolver Interface:**
 ```typescript
 export type DNSResolver = (
-  host: string,
-  type: DNSRecordType,
+	host: string,
+	type: DNSRecordType,
 ) => Promise<AnyDNSRecord[]>;
 ```
 
-💡 A list of publicly available DNS resolvers is available at: https://public-dns.info/.
+> 💡 **Tip:** Find more public [DoH endpoints here](https://github.com/curl/curl/wiki/DNS-over-HTTPS)
+
+Same as `dnsJsonOverHttps`, you can also use `digResolver` with a custom server:
+
+```javascript
+import { getDnsRecords, digResolver } from 'diggy';
+const customDigResolver = digResolver('1.1.1.1');
+const records = await getDnsRecords('example.com', 'A', customDigResolver);
+```
+> 💡 **Tip:** Find more public [DNS servers here](https://public-dns.info/)
+
+## 📝 Supported Record Types
+
+| Type  | Description            | Example Use Case        |
+|-------|------------------------|-------------------------|
+| A     | IPv4 address           | Website hosting         |
+| AAAA  | IPv6 address           | IPv6 connectivity       |
+| CNAME | Canonical name         | Domain aliases          |
+| MX    | Mail exchange          | Email routing           |
+| TXT   | Text records           | SPF, DKIM, verification |
+| SOA   | Start of authority     | Zone information        |
+| SRV   | Service records        | Service discovery       |
+| CAA   | Certificate authority  | SSL/TLS security        |
+| NAPTR | Name authority pointer | ENUM, SIP routing       |
 
 ## 📜 Response Format
+
+DNS records are returned as an array of objects with the following structure:
 
 ```typescript
 import { CaaRecordData, MxRecordData, SoaRecordData, SrvRecordData, NaptrRecordData } from "./types";
@@ -105,47 +169,53 @@ interface AnyDNSRecord {
 }
 ```
 
-Responses are returned as an array of objects, each representing a DNS record.
+### Example Response
 
 ```json
 [
-  {
-    "name": "example.com",
-    "type": "SOA",
-    "ttl": 3600,
-    "data": {
-      "nsname": "ns1.example.com.",
-      "hostmaster": "hostmaster.example.com.",
-      "serial": 2025051204,
-      "refresh": 10800,
-      "retry": 3600,
-      "expire": 604800,
-      "minttl": 3600
-    }
-  },
-  {
-    "name": "example.cz",
-    "type": "A",
-    "ttl": 1800,
-    "data": "66.33.66.33"
-  },
-  {
-    "name": "example.cz",
-    "type": "MX",
-    "ttl": 60,
-    "data": {
-      "priority": 10,
-      "exchange": "mail.example.com"
-    }
-  }
+	{
+		"name": "example.com",
+		"type": "SOA",
+		"ttl": 3600,
+		"data": {
+			"nsname": "ns1.example.com.",
+			"hostmaster": "hostmaster.example.com.",
+			"serial": 2025051204,
+			"refresh": 10800,
+			"retry": 3600,
+			"expire": 604800,
+			"minttl": 3600
+		}
+	},
+	{
+		"name": "example.cz",
+		"type": "A",
+		"ttl": 1800,
+		"data": "66.33.66.33"
+	},
+	{
+		"name": "example.cz",
+		"type": "MX",
+		"ttl": 60,
+		"data": {
+			"priority": 10,
+			"exchange": "mail.example.com"
+		}
+	}
 ]
 ```
 
-## License
+## 🔧 Requirements
 
-[MIT](/LICENSE)
+- **Node.js**: Version 14 or higher
+- **dig command**: Required only when using the 'dig' resolver
+- **Internet connection**: Required for DoH resolvers (google, cloudflare)
 
-## Contributing
+## 📄 License
+
+[MIT License](LICENSE) - see the [LICENSE](LICENSE) file for details.
+
+## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
@@ -154,3 +224,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
+
+
+--- 
+
+Made with ❤️ by the [Roman Ožana](https://ozana.cz)
