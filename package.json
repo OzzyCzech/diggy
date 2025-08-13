@@ -4,6 +4,7 @@
 	"description": "Multi-backend DNS resolver for Node.js/Browser — supports dig, DNS over HTTPS, and native Node.js DNS.",
 	"repository": "git@github.com:OzzyCzech/diggy.git",
 	"author": "Roman Ožana <roman@ozana.cz>",
+	"keywords": ["dns", "dig", "dns-over-https","DoH", "nodejs", "browser", "dns-resolver", "resolver", "lookup", "dns-client", "dns-server", "dns-tools", "google-dns", "cloudflare-dns", "dns-over-tls"],
 	"license": "MIT",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",

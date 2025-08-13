@@ -17,8 +17,8 @@ function convertDataByType(type: DNSRecordType, data: InputData): OutputData {
 			}
 
 			return {
-				nsname: parts[0],
-				hostmaster: parts[1],
+				nsname: (parts[0] ?? "").replace(/\.$/, ""),
+				hostmaster: (parts[1] ?? "").replace(/\.$/, ""),
 				serial: parseInt(parts[2] ?? "", 10),
 				refresh: parseInt(parts[3] ?? "", 10),
 				retry: parseInt(parts[4] ?? "", 10),
