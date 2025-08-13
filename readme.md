@@ -5,7 +5,7 @@ It supports:
 
 - DNS over HTTPS (DoH)
 - The native [`dig`](https://linux.die.net/man/1/dig) command
-- The built-in [Node.js `dns` module](https://nodejs.org/api/dns.html)
+- The built-in Node.js [dns module](https://nodejs.org/api/dns.html)
 
 With Diggy, you can easily retrieve a variety of DNS record types for any domain — including **A**, **AAAA**, **SOA**,
 **CNAME**, **TXT**, **MX**, and more.
