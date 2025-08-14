@@ -79,7 +79,7 @@ function getDnsRecords(
 
 **Returns:** Promise resolving to an array of DNS records
 
-## 🌍 Browser Usage
+### 🌍 Browser Usage
 
 You can also use Diggy in the browser via ESM imports. This allows you to fetch DNS records directly from client-side
 JavaScript. There are built-in resolvers for Google and Cloudflare DNS over HTTPS, which work seamlessly in the browser.
