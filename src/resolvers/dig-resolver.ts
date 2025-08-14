@@ -1,6 +1,29 @@
-import type { AnyDNSRecord, DNSRecordType, DNSResolver } from "../types";
+import type { AnyDNSRecord, DNSRecordType } from "../types";
 import { toDnsRecord } from "../utils/to-dns-record";
+import type { DNSResolver } from "./DNSResolver";
 
+/**
+ * Returns a DNS resolver that uses the `dig` command to resolve DNS records.
+ *
+ * ```ts
+ * import { digResolver } from "diggy";
+ * const resolver = digResolver();
+ * const records = await resolver("example.com", "A");
+ * console.log(records);
+ * ```
+ *
+ * You can also specify the DNS server to use by passing it as an argument:
+ *
+ * ```ts
+ * import { digResolver } from "diggy";
+ * const resolver = digResolver("1.1.1.1");
+ * const records = await resolver("example.com", "A");
+ * console.log(records);
+ *```
+ *
+ * @param server - The DNS server to use (optional). If not provided, the default system resolver will be used.
+ * @group Resolvers
+ */
 export function digResolver(server?: string): DNSResolver {
 	return async (host: string, type: DNSRecordType): Promise<AnyDNSRecord[]> => {
 		const args = [];

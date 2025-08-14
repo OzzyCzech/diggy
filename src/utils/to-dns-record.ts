@@ -55,6 +55,17 @@ function convertDataByType(type: DNSRecordType, data: InputData): OutputData {
 	return Array.isArray(data) ? data.join(" ") : data;
 }
 
+/**
+ * Converts input data to a DNS record format.
+ * This function takes a name, type, optional TTL, and data,
+ * and returns an object representing a DNS record.
+ *
+ * @param name - The name of the DNS record, e.g., "example.com".
+ * @param type - The type of DNS record, e.g., "A", "AAAA", "MX", etc.
+ * @param ttl - The time-to-live (TTL) for the DNS record, in seconds. Defaults to 0 if not provided.
+ * @param data - The data associated with the DNS record, which can vary based on the type.
+ * @group Utilities
+ */
 export function toDnsRecord({
 	name,
 	type,

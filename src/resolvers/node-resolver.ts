@@ -8,8 +8,33 @@ import type {
 	TlsaRecord,
 } from "node:dns";
 import * as _dns from "node:dns/promises";
-import { type AnyDNSRecord, DNSRecordType, type DNSResolver } from "../types";
+import { type AnyDNSRecord, DNSRecordType } from "../types";
+import type { DNSResolver } from "./DNSResolver";
 
+/**
+ * Returns a DNS resolver that uses Node.js's built-in DNS module.
+ *
+ * @example
+ * Without any additional configuration, it will use the system's default DNS servers.
+ *
+ *  ```ts
+ * import { nodeResolver } from "diggy";
+ * const resolver = nodeResolver();
+ * const records = await resolver("example.com", "A");
+ * ```
+ *
+ * @example
+ * You can specify a list of DNS servers to use.
+ *
+ * ```ts
+ * import { nodeResolver } from "diggy";
+ * const resolver = nodeResolver(["8.8.8.8", "1.1.1.1"]);
+ * const records = await resolver("example.com", "A");
+ * ```
+ *
+ * @param servers - An array of DNS server addresses to use. If empty, the system's default DNS servers will be used.
+ * @group Resolvers
+ */
 export function nodeResolver(servers: string[] = []): DNSResolver {
 	const dns = new _dns.Resolver();
 
