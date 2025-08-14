@@ -233,7 +233,7 @@ interface AnyDNSRecord {
 
 ## 🔧 Requirements
 
-- **Node.js**: Version 14 or higher
+- **Node.js**: Version 22 or higher
 - **dig command**: Required only when using the 'dig' resolver
 - **Internet connection**: Required for DoH resolvers (google, cloudflare)
 
