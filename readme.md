@@ -77,7 +77,7 @@ function getDnsRecords(
 - `type` (string, optional): DNS record type (A, AAAA, MX, TXT, etc.). If omitted, returns all available records
 - `resolver` (string | BuildInDNSResolver | DNSResolver, optional): DNS resolver to use
 
-**Returns:** Promise resolving to an array of DNS records
+**Returns:** Promise resolving to an array of DNS records, see [Response format](#response-format) for details.
 
 ### 🌍 Browser Usage
 
@@ -171,7 +171,7 @@ export type DNSResolver = (
 | CAA   | Certificate authority  | SSL/TLS security        |
 | NAPTR | Name authority pointer | ENUM, SIP routing       |
 
-## 📜 Response Format
+## Response Format
 
 DNS records are returned as an array of objects with the following structure:
 
