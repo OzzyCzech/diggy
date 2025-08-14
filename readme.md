@@ -60,15 +60,14 @@ const mxRecords = await getDnsRecords('example.com', 'MX');
 
 ```typescript
 import { type AnyDNSRecord, getDnsRecords } from 'diggy';
-
 const records: AnyDNSRecord[] = await getDnsRecords('example.com', 'A');
 ```
 
 ```typescript
 function getDnsRecords(
-	host: string,
-	type?: string,
-	resolver?: string | BuildInDNSResolver | DNSResolver,
+  host: string,
+  type?: string,
+  resolver?: string | BuildInDNSResolver | DNSResolver,
 ): Promise<AnyDNSRecord[]>
 ```
 
@@ -88,9 +87,8 @@ JavaScript. There are built-in resolvers for Google and Cloudflare DNS over HTTP
 ```html
 
 <script type="module">
-	import { getDnsRecords } from 'https://esm.sh/diggy';
-	
-	const records = await getDnsRecords('ozana.cz');
+  import { getDnsRecords } from 'https://esm.sh/diggy';
+  const records = await getDnsRecords('ozana.cz');
 </script>
 ```
 
@@ -154,8 +152,8 @@ You can also **create your own custom resolver** by implementing the `DNSResolve
 
 ```typescript
 export type DNSResolver = (
-	host: string,
-	type: DNSRecordType,
+  host: string,
+  type: DNSRecordType,
 ) => Promise<AnyDNSRecord[]>;
 ```
 
@@ -181,19 +179,19 @@ DNS records are returned as an array of objects with the following structure:
 import { CaaRecordData, MxRecordData, SoaRecordData, SrvRecordData, NaptrRecordData } from "./types";
 
 interface AnyDNSRecord {
-	name: string;    // Domain name
-	type: string;    // Record type (A, AAAA, MX, etc.)
-	ttl: number;     // Time-to-live in seconds
+  name: string;    // Domain name
+  type: string;    // Record type (A, AAAA, MX, etc.)
+  ttl: number;     // Time-to-live in seconds
 
-	// Record data (format varies by type)
-	data:
-		| string
-		| string[]
-		| MxRecordData
-		| SoaRecordData
-		| CaaRecordData
-		| NaptrRecordData
-		| SrvRecordData;
+  // Record data (format varies by type)
+  data:
+    | string
+    | string[]
+    | MxRecordData
+    | SoaRecordData
+    | CaaRecordData
+    | NaptrRecordData
+    | SrvRecordData;
 }
 ```
 
@@ -201,35 +199,35 @@ interface AnyDNSRecord {
 
 ```json
 [
-	{
-		"name": "example.com",
-		"type": "SOA",
-		"ttl": 3600,
-		"data": {
-			"nsname": "ns1.example.com.",
-			"hostmaster": "hostmaster.example.com.",
-			"serial": 2025051204,
-			"refresh": 10800,
-			"retry": 3600,
-			"expire": 604800,
-			"minttl": 3600
-		}
-	},
-	{
-		"name": "example.cz",
-		"type": "A",
-		"ttl": 1800,
-		"data": "66.33.66.33"
-	},
-	{
-		"name": "example.cz",
-		"type": "MX",
-		"ttl": 60,
-		"data": {
-			"priority": 10,
-			"exchange": "mail.example.com"
-		}
-	}
+  {
+    "name": "example.com",
+    "type": "SOA",
+    "ttl": 3600,
+    "data": {
+      "nsname": "ns1.example.com.",
+      "hostmaster": "hostmaster.example.com.",
+      "serial": 2025051204,
+      "refresh": 10800,
+      "retry": 3600,
+      "expire": 604800,
+      "minttl": 3600
+    }
+  },
+  {
+    "name": "example.cz",
+    "type": "A",
+    "ttl": 1800,
+    "data": "66.33.66.33"
+  },
+  {
+    "name": "example.cz",
+    "type": "MX",
+    "ttl": 60,
+    "data": {
+      "priority": 10,
+      "exchange": "mail.example.com"
+    }
+  }
 ]
 ```
 
