@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { type DNSRecordType, getResolver } from "../src";
+import { BuildInDNSResolver, type DNSRecordType, getResolver } from "../src";
 
 describe("getResolver", () => {
 	it("should return default resolver", async () => {
@@ -18,7 +18,7 @@ describe("getResolver", () => {
 	});
 
 	it("should return nodejs resolver", async () => {
-		const resolver = getResolver("nodejs");
+		const resolver = getResolver(BuildInDNSResolver.nodejs);
 
 		expect(typeof resolver).toBe("function");
 		expect(resolver.length).toBe(2);
