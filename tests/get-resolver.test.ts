@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { BuildInDNSResolver, type DNSRecordType, getResolver } from "../src";
+import {
+	BuildInDNSResolver,
+	type DNSRecordType,
+	getResolver,
+} from "../src/index.js";
 
 describe("getResolver", () => {
 	it("should return default resolver", async () => {
