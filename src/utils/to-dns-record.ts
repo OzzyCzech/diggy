@@ -3,7 +3,7 @@ import {
 	DNSRecordType,
 	type MxRecordData,
 	type SoaRecordData,
-} from "../types";
+} from "../types.js";
 
 type InputData = string | string[];
 type OutputData = string | string[] | MxRecordData | SoaRecordData;

@@ -1,7 +1,7 @@
-import type { DNSResolver } from "./resolvers/DNSResolver";
-import { digResolver } from "./resolvers/dig-resolver";
-import { dohResolver } from "./resolvers/doh-resolver";
-import { nodeResolver } from "./resolvers/node-resolver";
+import type { DNSResolver } from "./resolvers/DNSResolver.js";
+import { digResolver } from "./resolvers/dig-resolver.js";
+import { dohResolver } from "./resolvers/doh-resolver.js";
+import { nodeResolver } from "./resolvers/node-resolver.js";
 
 /**
  * Represents the built-in DNS resolvers available in the library.
@@ -12,12 +12,14 @@ import { nodeResolver } from "./resolvers/node-resolver";
  * @property {string} cloudflare - Uses Cloudflare's DNS over HTTPS (DoH) resolver.
  * @group Resolvers
  */
-export enum BuildInDNSResolver {
-	nodejs = "nodejs",
-	dig = "dig",
-	google = "google",
-	cloudflare = "cloudflare",
-}
+export const BuildInDNSResolver = {
+	nodejs: "nodejs",
+	dig: "dig",
+	google: "google",
+	cloudflare: "cloudflare",
+};
+
+export type BuildInDNSResolver = keyof typeof BuildInDNSResolver;
 
 const resolvers: Record<BuildInDNSResolver, DNSResolver> = {
 	nodejs: nodeResolver(),

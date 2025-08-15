@@ -1,4 +1,4 @@
-import { DNSRecordType } from "../types";
+import { DNSRecordType } from "../types.js";
 
 /**
  * Converts a string representation of a DNS record type to the corresponding `DNSRecordType` enum value.

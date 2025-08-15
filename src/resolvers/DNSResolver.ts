@@ -1,4 +1,4 @@
-import type { AnyDNSRecord, DNSRecordType } from "../types";
+import type { AnyDNSRecord, DNSRecordType } from "../types.js";
 
 /**
  * DNSResolver is a function type that takes a host and a DNS record type,

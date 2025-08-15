@@ -1,6 +1,6 @@
-import type { AnyDNSRecord, DNSRecordType } from "../types";
-import { toDnsRecord } from "../utils/to-dns-record";
-import type { DNSResolver } from "./DNSResolver";
+import type { AnyDNSRecord, DNSRecordType } from "../types.js";
+import { toDnsRecord } from "../utils/to-dns-record.js";
+import type { DNSResolver } from "./DNSResolver.js";
 
 /**
  * Returns a DNS resolver that uses DNS over HTTPS (DoH) to resolve DNS records.

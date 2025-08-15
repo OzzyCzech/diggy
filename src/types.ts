@@ -16,19 +16,21 @@
  *
  * @group DNS Records
  */
-export enum DNSRecordType {
-	A = "A",
-	AAAA = "AAAA",
-	CAA = "CAA",
-	CNAME = "CNAME",
-	NAPTR = "NAPTR",
-	MX = "MX",
-	NS = "NS",
-	PTR = "PTR",
-	SOA = "SOA",
-	SRV = "SRV",
-	TXT = "TXT",
-}
+export const DNSRecordType = {
+	A: "A",
+	AAAA: "AAAA",
+	CAA: "CAA",
+	CNAME: "CNAME",
+	NAPTR: "NAPTR",
+	MX: "MX",
+	NS: "NS",
+	PTR: "PTR",
+	SOA: "SOA",
+	SRV: "SRV",
+	TXT: "TXT",
+};
+
+export type DNSRecordType = (typeof DNSRecordType)[keyof typeof DNSRecordType];
 
 /**
  * Represents the data for a DNS MX (Mail Exchange) record.

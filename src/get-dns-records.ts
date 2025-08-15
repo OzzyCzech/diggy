@@ -1,8 +1,8 @@
-import { type BuildInDNSResolver, getResolver } from "./get-resolver";
-import type { DNSResolver } from "./resolvers/DNSResolver";
-import type { AnyDNSRecord, DNSRecordType } from "./types";
-import { resolveAllRecords } from "./utils/resolve-all-records";
-import { toDnsType } from "./utils/to-dns-type";
+import { type BuildInDNSResolver, getResolver } from "./get-resolver.js";
+import type { DNSResolver } from "./resolvers/DNSResolver.js";
+import type { AnyDNSRecord, DNSRecordType } from "./types.js";
+import { resolveAllRecords } from "./utils/resolve-all-records.js";
+import { toDnsType } from "./utils/to-dns-type.js";
 
 /**
  * Fetches DNS records for a given `host` and type. When no `type` is specified,

@@ -1,5 +1,5 @@
-import type { DNSResolver } from "../resolvers/DNSResolver";
-import { type AnyDNSRecord, DNSRecordType } from "../types";
+import type { DNSResolver } from "../resolvers/DNSResolver.js";
+import { type AnyDNSRecord, DNSRecordType } from "../types.js";
 
 /**
  * Resolves all DNS records for a given host using the specified resolver.

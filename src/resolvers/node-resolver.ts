@@ -8,8 +8,8 @@ import type {
 	TlsaRecord,
 } from "node:dns";
 import * as _dns from "node:dns/promises";
-import { type AnyDNSRecord, DNSRecordType } from "../types";
-import type { DNSResolver } from "./DNSResolver";
+import { type AnyDNSRecord, DNSRecordType } from "../types.js";
+import type { DNSResolver } from "./DNSResolver.js";
 
 /**
  * Returns a DNS resolver that uses Node.js's built-in DNS module.
