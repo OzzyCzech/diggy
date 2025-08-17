@@ -6,6 +6,7 @@ export * from "./resolvers/doh-resolver.js";
 export * from "./resolvers/dot-resolver.js";
 export * from "./resolvers/node-resolver.js";
 export * from "./types.js";
+export * from "./utils/detect.js";
 export * from "./utils/resolve-all-records.js";
 export * from "./utils/to-dns-record.js";
 export * from "./utils/to-dns-type.js";

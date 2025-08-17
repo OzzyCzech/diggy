@@ -1,14 +1,22 @@
 import type {
 	AnyRecord,
+	AnyRecord,
+	CaaRecord,
 	CaaRecord,
 	MxRecord,
+	MxRecord,
+	NaptrRecord,
 	NaptrRecord,
 	RecordWithTtl,
+	RecordWithTtl,
 	SrvRecord,
+	SrvRecord,
+	TlsaRecord,
 	TlsaRecord,
 } from "node:dns";
 import * as _dns from "node:dns/promises";
 import { type AnyDNSRecord, DNSRecordType } from "../types.js";
+import { isBrowser, isServerRuntime } from "../utils/detect.js";
 import type { DNSResolver } from "./DNSResolver.js";
 
 /**
@@ -36,17 +44,20 @@ import type { DNSResolver } from "./DNSResolver.js";
  * @group Resolvers
  */
 export function nodeResolver(servers: string[] = []): DNSResolver {
-	if (typeof window !== "undefined") {
-		throw new Error("nodeResolver is only supported in Node.js environments.");
-	}
+	let dns: _dns.Resolver | null = null;
 
-	const dns = new _dns.Resolver();
-
-	if (servers.length > 0) {
-		dns.setServers(servers);
+	if (isServerRuntime()) {
+		dns = new _dns.Resolver();
+		if (servers.length > 0) {
+			dns.setServers(servers);
+		}
 	}
 
 	return async (host: string, type: DNSRecordType): Promise<AnyDNSRecord[]> => {
+		if (isBrowser() || !dns) {
+			throw new Error("nodeResolver cannot be used in a browser environment");
+		}
+
 		try {
 			// Handle special cases for A and AAAA records to include TTL
 			if (type === DNSRecordType.A || type === DNSRecordType.AAAA) {
