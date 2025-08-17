@@ -1,17 +1,10 @@
 import type {
 	AnyRecord,
-	AnyRecord,
-	CaaRecord,
 	CaaRecord,
 	MxRecord,
-	MxRecord,
-	NaptrRecord,
 	NaptrRecord,
 	RecordWithTtl,
-	RecordWithTtl,
 	SrvRecord,
-	SrvRecord,
-	TlsaRecord,
 	TlsaRecord,
 } from "node:dns";
 import * as _dns from "node:dns/promises";
