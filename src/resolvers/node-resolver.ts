@@ -36,6 +36,10 @@ import type { DNSResolver } from "./DNSResolver.js";
  * @group Resolvers
  */
 export function nodeResolver(servers: string[] = []): DNSResolver {
+	if (typeof window !== "undefined") {
+		throw new Error("nodeResolver is only supported in Node.js environments.");
+	}
+
 	const dns = new _dns.Resolver();
 
 	if (servers.length > 0) {
