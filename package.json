@@ -1,6 +1,6 @@
 {
 	"name": "diggy",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"description": "Multi-backend DNS resolver for Node.js/Browser — supports dig, DNS over HTTPS, and native Node.js DNS.",
 	"repository": "OzzyCzech/diggy",
 	"website": "https://ozzyczech.github.io/diggy/",
