@@ -550,12 +550,12 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/merge-streams/-/merge-streams-2.3.0.tgz#719df7fb41766bc143369eaa0dd56d8dc87c9958"
   integrity sha512-LtoMMhxAlorcGhmFYI+LhPgbPZCkgP6ra1YL604EeF6U98pLlQ3iWIGMdWSC+vWmPBWBNgmDBAhnAobLROJmwg==
 
-"@types/bun@^1.2.22":
-  version "1.2.22"
-  resolved "https://registry.yarnpkg.com/@types/bun/-/bun-1.2.22.tgz#c8e62a81dafc99a9a48dd51b9375e25597fab652"
-  integrity sha512-5A/KrKos2ZcN0c6ljRSOa1fYIyCKhZfIVYeuyb4snnvomnpFqC0tTsEkdqNxbAgExV384OETQ//WAjl3XbYqQA==
+"@types/bun@^1.2.23":
+  version "1.2.23"
+  resolved "https://registry.yarnpkg.com/@types/bun/-/bun-1.2.23.tgz#c8af662c9df3d32958e627a1d94b964ae881e39f"
+  integrity sha512-le8ueOY5b6VKYf19xT3McVbXqLqmxzPXHsQT/q9JHgikJ2X22wyTW3g3ohz2ZMnp7dod6aduIiq8A14Xyimm0A==
   dependencies:
-    bun-types "1.2.22"
+    bun-types "1.2.23"
 
 "@types/chai@^5.2.2":
   version "5.2.2"
@@ -802,10 +802,10 @@ braces@^3.0.3:
   dependencies:
     fill-range "^7.1.1"
 
-bun-types@1.2.22:
-  version "1.2.22"
-  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.2.22.tgz#c4c4339ffda16ba8c637938025d0975da6213b5b"
-  integrity sha512-hwaAu8tct/Zn6Zft4U9BsZcXkYomzpHJX28ofvx7k0Zz2HNz54n1n+tDgxoWFGB4PcFvJXJQloPhaV2eP3Q6EA==
+bun-types@1.2.23:
+  version "1.2.23"
+  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.2.23.tgz#d2550c5b1ad32cc779d27e146d1062cb45329101"
+  integrity sha512-R9f0hKAZXgFU3mlrA0YpE/fiDvwV0FT9rORApt2aQVWSuJDzZOyB5QLc0N/4HF57CS8IXJ6+L5E4W1bW6NS2Aw==
   dependencies:
     "@types/node" "*"
 
@@ -2630,10 +2630,10 @@ tslib@^2.1.0:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.8.1.tgz#612efe4ed235d567e8aba5f2a5fab70280ade83f"
   integrity sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==
 
-tsx@^4.20.5:
-  version "4.20.5"
-  resolved "https://registry.yarnpkg.com/tsx/-/tsx-4.20.5.tgz#856c8b2f114c50a9f4ae108126967a167f240dc7"
-  integrity sha512-+wKjMNU9w/EaQayHXb7WA7ZaHY6hN8WgfvHNQ3t1PnU91/7O8TcTnIhCDYTZwnt8JsO9IBqZ30Ln1r7pPF52Aw==
+tsx@^4.20.6:
+  version "4.20.6"
+  resolved "https://registry.yarnpkg.com/tsx/-/tsx-4.20.6.tgz#8fb803fd9c1f70e8ccc93b5d7c5e03c3979ccb2e"
+  integrity sha512-ytQKuwgmrrkDTFP4LjR0ToE2nqgy886GpvRSpU0JAnrdBYppuY5rLkRUYPU1yCryb24SsKBTL/hlDQAEFVwtZg==
   dependencies:
     esbuild "~0.25.0"
     get-tsconfig "^4.7.5"
