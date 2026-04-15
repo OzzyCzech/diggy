@@ -1,4 +1,7 @@
 {
 	"extends": "@ozzyczech/tsconfig",
+	"compilerOptions": {
+		"lib": ["ES2024", "DOM", "DOM.Iterable"]
+	},
 	"include": ["src/**/*"]
 }
