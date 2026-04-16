@@ -1,7 +1,9 @@
 {
 	"extends": "@ozzyczech/tsconfig",
 	"compilerOptions": {
-		"lib": ["ES2024", "DOM", "DOM.Iterable"]
+		"rootDir": "./src",
+		"lib": ["ES2024", "DOM", "DOM.Iterable"],
+		"types": ["node", "bun", "deno"]
 	},
 	"include": ["src/**/*"]
 }
